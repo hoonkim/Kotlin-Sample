@@ -1,6 +1,8 @@
 package com.example.testapplication
 
 import android.app.Application
+import com.example.testapplication.data.local.LocalDataModule
+import com.example.testapplication.ui.main.MainModule
 
 import javax.inject.Singleton
 
@@ -10,7 +12,7 @@ import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
 
 @Singleton
-@Component(modules = [AndroidInjectionModule::class])
+@Component(modules = [AndroidInjectionModule::class, LocalDataModule::class, MainModule::class])
 interface AppComponent : AndroidInjector<TestApplication> {
     @Component.Builder
     interface Builder {
