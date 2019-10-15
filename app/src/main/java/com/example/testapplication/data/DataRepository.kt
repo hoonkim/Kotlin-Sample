@@ -15,9 +15,7 @@ class DataRepository @Inject constructor(private val dataDao: DataDao) {
         return dataDao.getDatas()
     }
 
-    fun insertData(number:Int, text:String): Completable {
-        return Completable.fromAction{ dataDao.insertData(Data(number, text)) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+    suspend fun insertData(number:Int, text:String) {
+        dataDao.insertData(Data(number, text))
     }
 }
