@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.testapplication.R
 import com.example.testapplication.data.DataRepository
@@ -28,11 +29,13 @@ class MainFragment() : Fragment() {
         val viewModel:MainViewModel by viewModels {viewModelFactory}
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        binding.direction = MainFragmentDirections.Companion
 
         val adapter = MainAdapter()
         binding.list.adapter = adapter
         binding.list.layoutManager = LinearLayoutManager(context)
         viewModel.dataList.observe(this, Observer(adapter::submitList))
+
 
         return binding.root
     }
@@ -41,7 +44,7 @@ class MainFragment() : Fragment() {
     companion object {
 
         fun newInstance(): MainFragment {
-            return MainFragment();
+            return MainFragment()
         }
     }
 }

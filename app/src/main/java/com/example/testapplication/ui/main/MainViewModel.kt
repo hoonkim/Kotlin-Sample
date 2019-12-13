@@ -28,6 +28,7 @@ class MainViewModel @Inject constructor(application: Application,
 
     fun increase() {
         number.postValue(number.value as Int + 1)
+        Log.d("Hoon", "Number : " + number.value)
     }
 
     fun saveData() = viewModelScope.launch {

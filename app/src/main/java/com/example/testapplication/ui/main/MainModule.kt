@@ -15,5 +15,13 @@ interface MainModule {
     @Binds
     @IntoMap
     @ViewModelKey(MainViewModel::class)
-    fun provideMainViewModel(mainViewModel: MainViewModel): ViewModel
+    fun provideMainViewModel(viewModel: MainViewModel): ViewModel
+
+    @ContributesAndroidInjector
+    fun contributeDestFragment(): DestFragment
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DestViewModel::class)
+    fun provideDestViewModel(viewModel: DestViewModel): ViewModel
 }
