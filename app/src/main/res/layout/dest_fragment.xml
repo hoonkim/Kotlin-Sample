@@ -4,19 +4,19 @@
     <data>
     <variable
         name="viewModel"
-        type="com.example.testapplication.ui.main.DestViewModel" />
+        type="com.example.testapplication.ui.destination.DestViewModel" />
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.DestFragment">
+        tools:context=".ui.destination.DestFragment">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@{`Wow : ` + viewModel.number}" />
+            android:text="@{@string/last_message(viewModel.message)}" />
 
     </FrameLayout>
 </layout>

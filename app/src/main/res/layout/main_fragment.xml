@@ -21,44 +21,24 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.MainFragment">
 
-        <TextView
-            android:id="@+id/number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@{viewModel.number}"
-            app:layout_constraintBaseline_toBaselineOf="@id/button"
-            app:layout_constraintEnd_toStartOf="@+id/button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="13" />
-
         <EditText
             android:id="@+id/mutableText"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="@={viewModel.text}"
-            app:layout_constraintStart_toEndOf="@+id/button"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:onClick="@{v -> viewModel.increase()}"
-            android:text="Increase"
-            app:layout_constraintStart_toEndOf="@+id/number"
+            android:layout_marginEnd="8dp"
+            android:text="@={viewModel.text}"
+            app:layout_constraintEnd_toStartOf="@+id/saveButton"
+            app:layout_constraintStart_toStartOf="@+id/list"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/saveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{v -> viewModel.saveData()}"
-            android:text="Print Log"
-            app:layout_constraintStart_toEndOf="@+id/mutableText"
+            android:text="@string/save"
+            app:layout_constraintEnd_toStartOf="@+id/navButton"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -68,16 +48,15 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button" />
+            app:layout_constraintTop_toBottomOf="@+id/navButton" />
 
         <Button
-            android:onClick="@{view -> Navigation.findNavController(view).navigate(direction.actionMainFragmentToDestFragment(viewModel.dataList.get(viewModel.dataList.size() - 1).number))}"
-            android:id="@+id/button3"
+            android:id="@+id/navButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:text="Button"
-            app:layout_constraintStart_toEndOf="@+id/button2"
+            android:onClick="@{view -> Navigation.findNavController(view).navigate(direction.actionMainFragmentToDestFragment(viewModel.dataList.get(viewModel.dataList.size() - 1).text))}"
+            android:text="@string/navigate"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 

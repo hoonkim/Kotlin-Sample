@@ -6,9 +6,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.testapplication.data.DataRepository
+import com.example.testapplication.data.repository.DataRepository
 import com.example.testapplication.data.entity.Data
-import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -26,13 +25,8 @@ class MainViewModel @Inject constructor(application: Application,
         dataList = dataRepository.getDatas()
     }
 
-    fun increase() {
-        number.postValue(number.value as Int + 1)
-        Log.d("Hoon", "Number : " + number.value)
-    }
-
     fun saveData() = viewModelScope.launch {
-        dataRepository.insertData(number.value as Int, text.value as String)
+        text.value?.let {dataRepository.insertData(it)}
         Log.d("Hoon", "Save Complete")
     }
 }

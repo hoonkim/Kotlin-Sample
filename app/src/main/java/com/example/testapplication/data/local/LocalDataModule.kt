@@ -16,6 +16,6 @@ class LocalDataModule {
     @Provides
     @Singleton
     fun provideDataBase(application: Application):TestDatabase {
-        return Room.databaseBuilder(application,TestDatabase::class.java, "test.db").build()
+        return Room.databaseBuilder(application,TestDatabase::class.java, "sample.db").build()
     }
 }

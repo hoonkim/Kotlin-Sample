@@ -1,6 +1,5 @@
-package com.example.testapplication.ui.main
+package com.example.testapplication.ui.destination
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,36 +15,22 @@ import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 class DestFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = DestFragment()
-    }
-
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-
-    private lateinit var viewModel: DestViewModel
+    val viewModel: DestViewModel by viewModels { viewModelFactory }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         AndroidSupportInjection.inject(this)
-        val binding:DestFragmentBinding =  DataBindingUtil.inflate(inflater, R.layout.dest_fragment, container, false)
-        val viewModel: DestViewModel by viewModels { viewModelFactory }
 
-        binding.lifecycleOwner = this
-        binding.viewModel = viewModel
         arguments?.let {
-            val value = DestFragmentArgs.fromBundle(it).lastNumber
-            viewModel.number.value = value
+            viewModel.message.value = DestFragmentArgs.fromBundle(it).lastMessage
         }
 
-        return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        // TODO: Use the ViewModel
+        return DataBindingUtil.inflate<DestFragmentBinding>(inflater, R.layout.dest_fragment, container, false).apply {
+            lifecycleOwner = this@DestFragment
+            viewModel = this@DestFragment.viewModel
+        }.root
     }
 
 }

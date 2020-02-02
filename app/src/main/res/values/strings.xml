@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TestApplication</string>
+    <string name="save">Save</string>
+    <string name="navigate">Navigate</string>
+    <string name="no_message">No message</string>
+    <string name="last_message">Last message : %s</string>
 </resources>

@@ -16,12 +16,12 @@
     </fragment>
     <fragment
         android:id="@+id/destFragment"
-        android:name="com.example.testapplication.ui.main.DestFragment"
+        android:name="com.example.testapplication.ui.destination.DestFragment"
         android:label="dest_fragment"
-        tools:layout="@layout/dest_fragment" >
+        tools:layout="@layout/dest_fragment">
         <argument
-            android:name="lastNumber"
-            app:argType ="integer"
-            android:defaultValue="-1" />
+            android:name="lastMessage"
+            android:defaultValue="No message"
+            app:argType="string" />
     </fragment>
 </navigation>

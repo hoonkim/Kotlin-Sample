@@ -1,4 +1,4 @@
-package com.example.testapplication.data
+package com.example.testapplication.data.repository
 
 import androidx.lifecycle.LiveData
 import com.example.testapplication.data.entity.Data
@@ -15,7 +15,7 @@ class DataRepository @Inject constructor(private val dataDao: DataDao) {
         return dataDao.getDatas()
     }
 
-    suspend fun insertData(number:Int, text:String) {
-        dataDao.insertData(Data(number, text))
+    suspend fun insertData(text:String) {
+        dataDao.insertData(Data(text))
     }
 }

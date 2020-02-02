@@ -1,4 +1,4 @@
-package com.example.testapplication.ui.main
+package com.example.testapplication.ui.destination
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -7,9 +7,5 @@ import androidx.lifecycle.ViewModel
 import javax.inject.Inject
 
 class DestViewModel @Inject constructor(application: Application) : AndroidViewModel(application)  {
-    val number:MutableLiveData<Int> = MutableLiveData()
-
-    init {
-        number.value = 1
-    }
+    val message:MutableLiveData<String> = MutableLiveData()
 }
